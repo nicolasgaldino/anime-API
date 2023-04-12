@@ -1,0 +1,7 @@
+asgiref==3.6.0
+Django==4.2
+mypy==1.2.0
+mypy-extensions==1.0.0
+sqlparse==0.4.3
+tomli==2.0.1
+typing_extensions==4.5.0
