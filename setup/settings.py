@@ -20,6 +20,7 @@ INSTALLED_APPS = [
 ]
 
 INSTALLED_APPS += [
+    'rest_framework',
     'animes',
 ]
 
