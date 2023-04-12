@@ -22,4 +22,4 @@ class AnimeSerializer(serializers.ModelSerializer):
 class GeneroSerializer(serializers.ModelSerializer):
     class Meta:
         model = Genero
-        fields = '__all__'
+        fields = ['id', 'nome']
