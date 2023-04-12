@@ -14,7 +14,7 @@ class AnimeSerializer(serializers.ModelSerializer):
             'nota',
             'estudio',
             'diretor',
-            'get_generos',
+            'generos',
             'imagem',
         ]
 

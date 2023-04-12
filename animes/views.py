@@ -1,6 +1,6 @@
 from rest_framework import viewsets
 from animes.models import Genero, Anime
-from serializer import GeneroSerializer, AnimeSerializer
+from animes.serializer import GeneroSerializer, AnimeSerializer
 
 
 class AnimesViewSet(viewsets.ModelViewSet):
