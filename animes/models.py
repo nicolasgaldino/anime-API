@@ -8,8 +8,9 @@ class Genero(models.Model):
         return self.nome
 
 
-class AnimeS(models.Model):
-    nome = models.CharField(max_length=100)
+class Anime(models.Model):
+    nome = models.CharField(max_length=255)
+    nome_alternativo = models.CharField(max_length=255, blank=True, null=True)
     sinopse = models.TextField()
     data_lancamento = models.DateField()
     nota = models.DecimalField(
