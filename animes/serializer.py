@@ -2,10 +2,18 @@ from rest_framework import serializers
 from animes.models import Genero, Anime
 
 
+class GeneroSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Genero
+        fields = ['nome']
+
+
 class AnimeSerializer(serializers.ModelSerializer):
+    generos = GeneroSerializer(many=True)
+
     class Meta:
         model = Anime
-        fields = [
+        fields = (
             'id',
             'nome',
             'nome_alternativo',
@@ -15,11 +23,5 @@ class AnimeSerializer(serializers.ModelSerializer):
             'estudio',
             'diretor',
             'generos',
-            'imagem',
-        ]
-
-
-class GeneroSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Genero
-        fields = ['id', 'nome']
+            'imagem'
+        )
