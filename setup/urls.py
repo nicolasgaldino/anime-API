@@ -1,6 +1,8 @@
+from django.conf import settings
 from django.contrib import admin
 from rest_framework import routers
 from django.urls import path, include
+from django.conf.urls.static import static
 from animes.views import GenerosViewSet, AnimesViewSet, ListaAnimesPorGenero
 
 
@@ -14,3 +16,5 @@ urlpatterns = [
     path('', include(router.urls)),
     path('animes/<int:pk>/generos/', ListaAnimesPorGenero.as_view()),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

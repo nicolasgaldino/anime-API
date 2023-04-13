@@ -23,7 +23,7 @@ class Anime(models.Model):
     diretor = models.CharField(max_length=50)
     generos = models.ManyToManyField('Genero')
     imagem = models.ImageField(
-        upload_to='media/covers/%Y/%m/%d',
+        upload_to='animes/covers/%Y/%m/%d',
         blank=True,
         default='',
     )
