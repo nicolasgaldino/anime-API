@@ -25,3 +25,11 @@ class AnimeSerializer(serializers.ModelSerializer):
             'generos',
             'imagem'
         )
+
+
+class ListaAnimesPorGenerosSerializer(serializers.ModelSerializer):
+    generos = GeneroSerializer(many=True)
+
+    class Meta:
+        model = Anime
+        fields = ['nome', 'nome_alternativo', 'generos']
