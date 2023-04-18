@@ -12,8 +12,9 @@ fetch(url, {
 })
   .then(response => response.json())
   .then(data => {
-    const carouselData = data.slice(0, 5);
+    const carouselData = data.slice(0, 5); // Use os primeiros 5 animes para o carrossel
 
+    // Adicione as informações de cada anime ao carrossel
     const carouselIndicators = document.querySelector('.carousel-indicators');
     const carouselInner = document.querySelector('.carousel-inner');
     carouselData.forEach((anime, index) => {
@@ -32,7 +33,7 @@ fetch(url, {
               <div class="fade-container rounded"></div>
               <div class="text-container rounded">
                 <h5>${anime.nome}</h5>
-                <p>Gênero: ${anime.generos.map(genero => genero.nome).join(', ')}</p>
+                <p>${anime.generos.map(genero => genero.nome).join(', ')}</p>
                 <p>Nota: ${anime.nota}</p>
               </div>
             </div>
@@ -41,28 +42,8 @@ fetch(url, {
       </div>
       `;
     });
-
-    function setCarouselHeight() {
-      const carousel = document.querySelector('.carousel');
-      const carouselInner = document.querySelector('.carousel-inner');
-      const carouselItem = document.querySelector('.carousel-item');
-      const carouselImg = document.querySelector('.carousel-item img');
-
-      carousel.style.height = carouselImg.offsetHeight + 'px';
-
-      carouselInner.style.height = carouselImg.offsetHeight + 'px';
-
-      carouselItem.style.height = carouselImg.offsetHeight + 'px';
-    }
-
-    window.addEventListener('resize', setCarouselHeight);
-
-    window.dispatchEvent(new Event('resize'));
-    window.addEventListener('load', setCarouselHeight);
   })
   .catch(error => console.error('Erro ao carregar animes:', error));
-
-
 
 fetch(url, {
   headers: {
