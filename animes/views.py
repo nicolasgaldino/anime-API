@@ -5,7 +5,7 @@ from rest_framework.authentication import BasicAuthentication
 from animes.serializer import (
     GeneroSerializer,
     AnimeSerializer,
-    ListaAnimesPorGenerosSerializer,
+    ListaAnimeDetalhadoSerializer,
     )
 
 
@@ -15,7 +15,7 @@ class AnimesViewSet(viewsets.ModelViewSet):
     authentication_classes = [BasicAuthentication]
     permission_classes = [IsAuthenticated]
 
-    queryset = Anime.objects.all()
+    queryset = Anime.objects.all().order_by('-id')
     serializer_class = AnimeSerializer
 
 
@@ -29,8 +29,8 @@ class GenerosViewSet(viewsets.ModelViewSet):
     serializer_class = GeneroSerializer
 
 
-class ListaAnimesPorGenero(generics.ListAPIView):
-    """Listando animes por gêneros."""
+class ListaAnimeDetalhado(generics.ListAPIView):
+    """Listando detalhes do anime."""
 
     authentication_classes = [BasicAuthentication]
     permission_classes = [IsAuthenticated]
@@ -38,4 +38,4 @@ class ListaAnimesPorGenero(generics.ListAPIView):
     def get_queryset(self):
         queryset = Anime.objects.filter(id=self.kwargs['pk'])
         return queryset
-    serializer_class = ListaAnimesPorGenerosSerializer
+    serializer_class = ListaAnimeDetalhadoSerializer

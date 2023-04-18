@@ -67,9 +67,9 @@ class AnimeSerializer(serializers.ModelSerializer):
         return anime
 
 
-class ListaAnimesPorGenerosSerializer(serializers.ModelSerializer):
+class ListaAnimeDetalhadoSerializer(serializers.ModelSerializer):
     generos = GeneroSerializer(many=True)
 
     class Meta:
         model = Anime
-        fields = ['nome', 'nome_alternativo', 'generos']
+        fields = '__all__'

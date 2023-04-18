@@ -1,0 +1,72 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+.header {
+  background-color: #1c1f2b;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.header__title {
+  font-size: 2rem;
+}
+
+.header__nav {
+  display: flex;
+}
+
+.header__nav-list {
+  display: flex;
+  list-style: none;
+}
+
+.header__nav-item:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.header__nav-item a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.header__nav-link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.main {
+  margin: 2rem 0;
+  max-width: 1000px;
+  padding: 0 1rem;
+  width: 100%;
+}
+
+.anime-details__title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.anime-details__img {
+  display: block;
+  margin: 0 auto;
+  max-width: 300px;
+  width: 100%;
+}
+
+.anime-details__generos,
+.anime-details__data-lancamento,
+.anime-details__descricao,
+.anime-details__nota {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
