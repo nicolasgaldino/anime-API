@@ -10,7 +10,11 @@ class Genero(models.Model):
 
 class Anime(models.Model):
     nome = models.CharField(max_length=255)
-    nome_alternativo = models.CharField(max_length=255, blank=True, null=True)
+    nome_alternativo = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+    )
     sinopse = models.TextField()
     data_lancamento = models.DateField()
     nota = models.DecimalField(
@@ -25,6 +29,7 @@ class Anime(models.Model):
     imagem = models.ImageField(
         upload_to='animes/covers/%Y/%m/%d',
         blank=True,
+        null=True,
         default='',
     )
 
