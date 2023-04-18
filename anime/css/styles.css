@@ -1,0 +1,72 @@
+@media only screen and (max-width: 768px) {
+  .card-img-top {
+    height: 15rem;
+  }
+
+  .navbar-btn {
+    margin-right: 15px;
+    margin-left: 15px;
+  }
+
+  .image-container {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .text-container {
+    padding: 10px;
+  }
+
+  .carrosel-container {
+    max-width: 90vw;
+  }
+
+  #animeCarousel {
+    max-height: 200px;
+  }
+}
+
+.card {
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+}
+
+.card-img-top {
+  object-fit: cover;
+  height: 25rem;
+  width: 100%;
+}
+
+.navbar-btn {
+  margin-right: 30px;
+  margin-left: 30px;
+}
+
+.image-container {
+  max-width: 500px;
+  max-height: 500px;
+  overflow: hidden;
+}
+
+.image-container img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.text-container {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  padding: 20px;
+}
+
+.carrosel-container {
+  max-width: 75vw;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+#animeCarousel {
+  max-height: 300px;
+  overflow: hidden;
+  border-radius: 5px;
+}

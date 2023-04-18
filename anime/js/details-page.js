@@ -1,4 +1,4 @@
-const animeList = document.querySelector('.anime-list');
+const animeList = document.querySelector('.anime-detail');
 const urlParams = new URLSearchParams(window.location.search);
 const animeId = urlParams.get('id');
 
