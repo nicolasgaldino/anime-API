@@ -1,6 +1,6 @@
 import { fetchJson } from './fetchJson.js'
 
-async function fetchAnimeData(carouselIndicatior, carouselInner, urlApi, authHeader) {
+export async function fetchAnimeData(carouselIndicatior, carouselInner, urlApi, authHeader) {
   try {
     const data = await fetchJson(urlApi, {
       headers: {
@@ -44,5 +44,3 @@ async function fetchAnimeData(carouselIndicatior, carouselInner, urlApi, authHea
     console.error('Erro ao carregar animes:', error);
   }
 };
-
-export { fetchAnimeData };

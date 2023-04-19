@@ -1,6 +1,6 @@
 import { createAnimeCard } from './createAnimeCard.js';
 
-function addAnimeCardsToDOM(data, animeList = null) {
+export function addAnimeCardsToDOM(data, animeList = null) {
   if (!data || !animeList) {
     return;
   }
@@ -21,5 +21,3 @@ function addAnimeCardsToDOM(data, animeList = null) {
     col.appendChild(animeCard);
   });
 }
-
-export { addAnimeCardsToDOM }

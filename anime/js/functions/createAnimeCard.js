@@ -1,4 +1,4 @@
-function createAnimeCard(anime) {
+export function createAnimeCard(anime) {
   const animeCard = document.createElement('div');
   animeCard.classList.add('card', 'anime-card__hover');
   animeCard.innerHTML = `
@@ -17,5 +17,3 @@ function createAnimeCard(anime) {
   });
   return animeCard;
 }
-
-export { createAnimeCard }
