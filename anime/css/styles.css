@@ -98,3 +98,7 @@ body {
   overflow: hidden;
   border-radius: 5px;
 }
+
+.modal-oppened {
+  backdrop-filter: blur(4px);
+}
