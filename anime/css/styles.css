@@ -1,3 +1,7 @@
+body {
+  background: #f9f9f9;
+}
+
 @media only screen and (max-width: 768px) {
   .card-img-top {
     height: 15rem;
@@ -24,6 +28,29 @@
   #animeCarousel {
     max-height: 200px;
   }
+}
+
+.container-detail {
+  background: #e0e0e0;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+  margin-top: 5rem;
+  margin-bottom: 6rem;
+}
+
+.anime-text,
+.sinopse {
+  letter-spacing: 0.5px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.anime-text {
+  margin-left: -13rem;
+}
+
+.sinopse {
+  margin-top: 1.5rem;
+  width: 95%;
 }
 
 .card {

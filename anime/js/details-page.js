@@ -20,16 +20,25 @@ fetch(url, {
       animeCard.id = anime.id; // Adiciona o ID do anime como o ID do elemento
       animeCard.classList.add('anime-card');
       animeCard.innerHTML = `
-        <img class="anime-img" src="${anime.imagem}" alt="${anime.nome}">
-        <h1 class="anime-title">${anime.nome}</h1>
-        <h2 class="anime-title">${anime.nome_alternativo}</h2>
-        <p class="anime-data-lancamento">Data de lançamento: ${anime.data_lancamento}</p>
-        <p class="anime-generos">${anime.generos.map(genero => genero.nome).join(', ')}</p>
-        <p class="anime-nota">Nota: ${anime.nota}</p>
-        <p class="anime-title">Estúdio: ${anime.estudio}</p>
-        <p class="anime-title">Diretor: ${anime.diretor}</p>
-        <p class="anime-title">Sinpose: <br> ${anime.sinopse}</p>
-
+      <div class="container container-detail mt-5 bg-light p-4 rounded">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="image-container">
+              <img src="${anime.imagem}" class="d-block img-fluid rounded" alt="${anime.nome}">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h1 class="anime-text">${anime.nome}</h1>
+            <h2 class="anime-text text-truncate">${anime.nome_alternativo}</h2>
+            <p class="anime-text">Gênero: ${anime.generos.map(genero => genero.nome).join(', ')}</p>
+            <p class="anime-text">Estúdio: ${anime.estudio}</p>
+            <p class="anime-text">Diretor: ${anime.diretor}</p>
+            <p class="anime-text">Lançamento: ${moment(anime.data_lancamento).format('DD - MM - YYYY')}</p>
+            <p class="anime-text">Nota: ${anime.nota}</p>
+          </div>
+        </div>
+        <p class="sinopse">Sinopse: <br> ${anime.sinopse}</p>
+      </div>
       `;
       animeList.appendChild(animeCard);
     });
