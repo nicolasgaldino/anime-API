@@ -20,7 +20,7 @@ fetch(url, {
       animeCard.id = anime.id; // Adiciona o ID do anime como o ID do elemento
       animeCard.classList.add('anime-card');
       animeCard.innerHTML = `
-      <div class="container container-detail mt-5 bg-light p-4 rounded">
+      <div class="container container-detail bg-light p-4 rounded">
         <div class="row">
           <div class="col-md-6">
             <div class="image-container">
