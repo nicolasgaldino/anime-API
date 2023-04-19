@@ -1,23 +1,26 @@
-const animeList = document.querySelector('.anime-detail');
+const ANIME_LIST = document.querySelector('.anime-detail');
 const urlParams = new URLSearchParams(window.location.search);
 const animeId = urlParams.get('id');
 
-const url = `http://127.0.0.1:8000/animes/${animeId}/detalhes/`;
+const URL = `http://127.0.0.1:8000/animes/${animeId}/detalhes/`;
 
-const username = 'nicolasEsmael';
-const password = '22565721aA!';
-const authHeader = 'Basic ' + btoa(username + ':' + password);
+const USERNAME = 'nicolasEsmael';
+const PASSWORD = '22565721aA!';
 
-fetch(url, {
-  headers: {
-    'Authorization': authHeader
-  }
-})
-  .then(response => response.json())
+const headers = new Headers();
+headers.append('Authorization', `Basic ${btoa(`${USERNAME}:${PASSWORD}`)}`);
+
+fetch(URL, { headers })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Erro ao carregar animes');
+    }
+    return response.json();
+  })
   .then(data => {
     data.forEach(anime => {
       const animeCard = document.createElement('div');
-      animeCard.id = anime.id; // Adiciona o ID do anime como o ID do elemento
+      animeCard.id = anime.id;
       animeCard.classList.add('anime-card');
       animeCard.innerHTML = `
       <div class="container container-detail bg-light p-4 rounded">
@@ -40,7 +43,7 @@ fetch(url, {
         <p class="sinopse">Sinopse: <br> ${anime.sinopse}</p>
       </div>
       `;
-      animeList.appendChild(animeCard);
+      ANIME_LIST.appendChild(animeCard);
     });
   })
   .catch(error => console.error('Erro ao carregar animes:', error));
