@@ -15,7 +15,7 @@ export function createAnimeCard(anime) {
   modal.classList.add('modal');
   modal.classList.add('modal-oppened');
   modal.innerHTML = `
-      <div class="container container-detail bg-light p-4 rounded">
+      <div class="container container-detail bg-light p-4 rounded modal-wrap">
         <div class="row">
           <div class="col-md-6">
             <div class="image-container">
@@ -33,7 +33,7 @@ export function createAnimeCard(anime) {
           </div>
         </div>
         <p class="sinopse">Sinopse: <br> ${anime.sinopse}</p>
-        <div class="d-flex justify-content-end mt-5">
+        <div class="d-flex justify-content-end mt-4">
           <button class="close-button btn btn-secondary">Fechar</button>
         </div>
       </div>
