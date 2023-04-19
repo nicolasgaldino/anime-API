@@ -13,7 +13,7 @@ router.register(r'animes', AnimesViewSet, basename='Animes')
 router.register('generos', GenerosViewSet, basename='Gêneros')
 
 pagination_class = PageNumberPagination
-pagination_class.page_size = 10
+pagination_class.page_size = 8
 
 
 urlpatterns = [

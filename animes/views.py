@@ -19,7 +19,7 @@ class AnimesViewSet(viewsets.ModelViewSet):
     queryset = Anime.objects.all().order_by('-id')
     serializer_class = AnimeSerializer
     pagination_class = PageNumberPagination
-    page_size = 10
+    page_size = 8
 
 
 class GenerosViewSet(viewsets.ModelViewSet):

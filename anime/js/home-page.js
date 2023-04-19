@@ -1,10 +1,18 @@
 const ANIME_LIST = document.querySelector('.container');
 const CAROUSEL_INDICATORS = document.querySelector('.carousel-indicators');
 const CAROUSEL_INNER = document.querySelector('.carousel-inner');
-const URL = 'http://127.0.0.1:8000/animes/';
+const URL = 'http://127.0.0.1:8000/animes/?page=1'; // alterado para o novo endpoint
+const BASE_URL = 'http://127.0.0.1:8000/animes/';
 const USERNAME = 'nicolasEsmael';
 const PASSWORD = '22565721aA!';
 const AUTH_HEADER = 'Basic ' + btoa(`${USERNAME}:${PASSWORD}`);
+const PREVIOUS_PAGE_BUTTON = document.getElementById('previous-page');
+const NEXT_PAGE_BUTTON = document.getElementById('next-page');
+const PAGE_SIZE = 8;
+let currentPage = 1;
+
+PREVIOUS_PAGE_BUTTON.addEventListener('click', fetchPreviousPage);
+NEXT_PAGE_BUTTON.addEventListener('click', fetchNextPage);
 
 const fetchJson = async (url, options) => {
   const response = await fetch(url, options);
@@ -21,7 +29,7 @@ const fetchAnimeData = async () => {
         Authorization: AUTH_HEADER,
       },
     });
-    const carouselData = data.slice(0, 5);
+    const carouselData = data.results.slice(0, 5); // atualizado para usar a nova estrutura de dados paginados
     CAROUSEL_INDICATORS.innerHTML = carouselData
       .map((_, index) => {
         const active = index === 0 ? 'active' : '';
@@ -59,7 +67,6 @@ const fetchAnimeData = async () => {
   }
 };
 
-fetchAnimeData();
 
 function createAnimeCard(anime) {
   const animeCard = document.createElement('div');
@@ -82,11 +89,15 @@ function createAnimeCard(anime) {
 }
 
 function addAnimeCardsToDOM(data) {
+  // Limpa a lista de animes antes de adicionar os novos cards
+  ANIME_LIST.innerHTML = '';
+
   const row = document.createElement('div');
   row.classList.add('row');
   ANIME_LIST.appendChild(row);
 
-  data.forEach(anime => {
+  const animeData = Array.isArray(data) ? data : data.results;
+  animeData.forEach(anime => {
     const col = document.createElement('div');
     col.classList.add('col-sm-6', 'col-md-4', 'col-lg-3', 'g-5');
     row.appendChild(col);
@@ -95,6 +106,46 @@ function addAnimeCardsToDOM(data) {
     col.appendChild(animeCard);
   });
 }
+
+function fetchNextPage() {
+  fetch(`${BASE_URL}?page=${currentPage + 1}`, {
+    headers: {
+      'Authorization': AUTH_HEADER
+    }
+  })
+    .then(response => response.json())
+    .then(data => {
+      addAnimeCardsToDOM(data.results);
+      if (data.results.length < PAGE_SIZE) {
+        NEXT_PAGE_BUTTON.style.display = 'none';
+      }
+      currentPage++;
+      localStorage.setItem('currentPage', currentPage);
+    })
+    .catch(error => console.error('Erro ao carregar animes:', error));
+}
+
+function fetchPreviousPage() {
+  if (currentPage > 1) {
+    fetch(`${BASE_URL}?page=${currentPage - 1}`, {
+      headers: {
+        'Authorization': AUTH_HEADER
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        addAnimeCardsToDOM(data.results);
+        if (data.results.length < PAGE_SIZE) {
+          NEXT_PAGE_BUTTON.style.display = 'none';
+        }
+        currentPage--;
+        localStorage.setItem('currentPage', currentPage);
+      })
+      .catch(error => console.error('Erro ao carregar animes:', error));
+  }
+}
+
+fetchAnimeData();
 
 fetch(URL, {
   headers: {
