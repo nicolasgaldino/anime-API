@@ -1,6 +1,7 @@
 from animes.models import Genero, Anime
 from rest_framework import viewsets, generics
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.authentication import BasicAuthentication
 from animes.serializer import (
     GeneroSerializer,
@@ -17,6 +18,8 @@ class AnimesViewSet(viewsets.ModelViewSet):
 
     queryset = Anime.objects.all().order_by('-id')
     serializer_class = AnimeSerializer
+    pagination_class = PageNumberPagination
+    page_size = 10
 
 
 class GenerosViewSet(viewsets.ModelViewSet):
