@@ -1,48 +1,59 @@
-const animeList = document.querySelector('.container');
-const carouselIndicators = document.querySelector('.carousel-indicators');
-const carouselInner = document.querySelector('.carousel-inner');
+const ANIME_LIST = document.querySelector('.container');
+const CAROUSEL_INDICATORS = document.querySelector('.carousel-indicators');
+const CAROUSEL_INNER = document.querySelector('.carousel-inner');
+const URL = 'http://127.0.0.1:8000/animes/';
+const USERNAME = 'nicolasEsmael';
+const PASSWORD = '22565721aA!';
+const AUTH_HEADER = 'Basic ' + btoa(`${USERNAME}:${PASSWORD}`);
 
-const url = 'http://127.0.0.1:8000/animes/';
-const username = 'nicolasEsmael';
-const password = '22565721aA!';
-const authHeader = 'Basic ' + btoa(username + ':' + password);
+const fetchJson = async (url, options) => {
+  const response = await fetch(url, options);
+  if (!response.ok) {
+    throw new Error(`Network response was not ok: ${response.status} ${response.statusText}`);
+  }
+  return response.json();
+};
 
 const fetchAnimeData = async () => {
   try {
-    const response = await fetch(url, {
+    const data = await fetchJson(URL, {
       headers: {
-        'Authorization': authHeader
-      }
+        Authorization: AUTH_HEADER,
+      },
     });
-
-    const data = await response.json();
     const carouselData = data.slice(0, 5);
-
-    carouselData.forEach((anime, index) => {
-      const active = index === 0 ? 'active' : '';
-      carouselIndicators.innerHTML += `<button type="button" data-bs-target="#animeCarousel" data-bs-slide-to="${index}" class="${active}" aria-current="${active}"></button>`;
-      carouselInner.innerHTML += `
-        <div class="carousel-item ${active}">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="image-container">
-                <img src="${anime.imagem}" class="d-block img-fluid" alt="${anime.nome}">
+    CAROUSEL_INDICATORS.innerHTML = carouselData
+      .map((_, index) => {
+        const active = index === 0 ? 'active' : '';
+        return `<button type="button" data-bs-target="#animeCarousel" data-bs-slide-to="${index}" class="${active}" aria-current="${active}"></button>`;
+      })
+      .join('');
+    CAROUSEL_INNER.innerHTML = carouselData
+      .map((anime, index) => {
+        const active = index === 0 ? 'active' : '';
+        return `
+          <div class="carousel-item ${active}">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="image-container">
+                  <img src="${anime.imagem}" class="d-block img-fluid" alt="${anime.nome}">
+                </div>
               </div>
-            </div>
-            <div class="col-md-6">
-              <div class="d-flex flex-column justify-content-start align-items-start h-100">
-                <div class="fade-container rounded"></div>
-                <div class="text-container rounded">
-                  <h5>${anime.nome}</h5>
-                  <p>${anime.generos.map(genero => genero.nome).join(', ')}</p>
-                  <p>Nota: ${anime.nota}</p>
+              <div class="col-md-6">
+                <div class="d-flex flex-column justify-content-start align-items-start h-100">
+                  <div class="fade-container rounded"></div>
+                  <div class="text-container rounded">
+                    <h5>${anime.nome}</h5>
+                    <p>${anime.generos.map((genero) => genero.nome).join(', ')}</p>
+                    <p>Nota: ${anime.nota}</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      `;
-    });
+        `;
+      })
+      .join('');
   } catch (error) {
     console.error('Erro ao carregar animes:', error);
   }
@@ -62,24 +73,18 @@ function createAnimeCard(anime) {
       <button class="anime-card__button btn btn-success anime-card__button" data-anime-id="${anime.id}">Detalhes</button>
     </div>
   `;
-  return animeCard;
-}
-
-function addAnimeDetailButtonEvent() {
-  const animeDetailButtons = document.querySelectorAll('.anime-card__button');
-  animeDetailButtons.forEach(button => {
-    button.addEventListener('click', (event) => {
-      event.preventDefault();
-      const animeId = button.dataset.animeId;
-      window.location.href = `../../anime/details-page.html?id=${animeId}`;
-    });
+  animeCard.querySelector('.anime-card__button').addEventListener('click', (event) => {
+    event.preventDefault();
+    const animeId = anime.id;
+    window.location.href = `../../anime/details-page.html?id=${animeId}`;
   });
+  return animeCard;
 }
 
 function addAnimeCardsToDOM(data) {
   const row = document.createElement('div');
   row.classList.add('row');
-  animeList.appendChild(row);
+  ANIME_LIST.appendChild(row);
 
   data.forEach(anime => {
     const col = document.createElement('div');
@@ -89,13 +94,11 @@ function addAnimeCardsToDOM(data) {
     const animeCard = createAnimeCard(anime);
     col.appendChild(animeCard);
   });
-
-  addAnimeDetailButtonEvent();
 }
 
-fetch(url, {
+fetch(URL, {
   headers: {
-    'Authorization': authHeader
+    'Authorization': AUTH_HEADER
   }
 })
   .then(response => response.json())
