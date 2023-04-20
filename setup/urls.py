@@ -36,15 +36,6 @@ schema_view = get_schema_view(
 )
 
 
-descript_var = '''
-Este repositório contém o código-fonte do My[P]AnimeList, um projeto que
-consiste em uma API que disponibiliza informações sobre animes para serem
-consumidas e exibidas em um front-end. Desenvolvido em Python com Django,
-utiliza banco de dados SQLite e autenticação básica. O front-end é construído
-com HTML, CSS e JavaScript.
-'''
-
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
