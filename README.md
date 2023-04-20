@@ -35,19 +35,37 @@ pip install -r requirements.txt
 
 As seguintes dependências foram utilizadas na versão atual do projeto:
 
-| Dependência                | Versão |
-|----------------------------|--------|
-| asgiref                    | 3.6.0  |
-| Django                     | 4.2    |
-| djangorestframework        | 3.14.0 |
-| Markdown                   | 3.4.3  |
-| mypy                       | 1.2.0  |
-| mypy-extensions            | 1.0.0  |
-| Pillow                     | 9.5.0  |
-| pytz                       | 2023.3 |
-| sqlparse                   | 0.4.3  |
-| tomli                      | 2.0.1  |
-| typing_extensions          | 4.5.0  |
+| Dependência                | Versão    |
+|----------------------------|-----------|
+| asgiref                    | 3.6.0     |
+| certifi                    | 2022.12.7 |
+| charset-normalizer         | 3.1.0     |
+| coreapi                    | 2.3.3     |
+| coreschema                 | 0.0.4     |
+| Django                     | 4.2       |
+| django-cors-headers        | 3.14.0    |
+| djangorestframework        | 3.14.0    |
+| drf-yasg                   | 1.21.5    |
+| idna                       | 3.4       |
+| inflection                 | 0.5.1     |
+| itypes                     | 1.2.0     |
+| Jinja2                     | 3.1.2     |
+| Markdown                   | 3.4.3     |
+| MarkupSafe                 | 2.1.2     |
+| mypy                       | 1.2.0     |
+| mypy-extensions            | 1.0.0     |
+| packaging                  | 23.1      |
+| Pillow                     | 9.5.0     |
+| python-decouple            | 3.8       |
+| pytz                       | 2023.3    |
+| requests                   | 2.28.2    |
+| ruamel.yaml                | 0.17.21   |
+| ruamel.yaml.clib           | 0.2.7     |
+| sqlparse                   | 0.4.3     |
+| tomli                      | 2.0.1     |
+| typing_extensions          | 4.5.0     |
+| uritemplate                | 4.1.1     |
+| urllib3                    | 1.26.15   |
 
 ## Inicializando o Projeto
 
