@@ -31,7 +31,10 @@ export async function fetchAnimeData(carouselIndicatior, carouselInner, urlApi, 
                   <div class="text-container rounded">
                     <h5>${anime.nome}</h5>
                     <p>${anime.generos.map((genero) => genero.nome).join(', ')}</p>
-                    <p>Nota: ${anime.nota}</p>
+                    <p class="bg-black">
+                      <i class="icon-mal"></i>
+                      ${anime.nota}
+                    </p>
                   </div>
                 </div>
               </div>
