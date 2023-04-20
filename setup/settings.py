@@ -22,6 +22,7 @@ INSTALLED_APPS = [
 INSTALLED_APPS += [
     'rest_framework',
     'corsheaders',
+    'drf_yasg',
     'animes',
 ]
 
@@ -79,6 +80,12 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',  # noqa E501
     },
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+    ],
+}
 
 
 LANGUAGE_CODE = 'pt-br'
