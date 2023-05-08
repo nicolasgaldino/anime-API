@@ -22,6 +22,7 @@ class AnimeSerializer(serializers.ModelSerializer):
             'nota',
             'estudio',
             'diretor',
+            'dublagem',
             'generos',
             'imagem'
         )
@@ -45,6 +46,7 @@ class AnimeSerializer(serializers.ModelSerializer):
                 'nota': 8.9,
                 'estudio': 'Sunrise',
                 'diretor': 'Shinichirō Watanabe',
+                'dublagem': False by default
                 'generos': [
                         {
                             "id": 1,

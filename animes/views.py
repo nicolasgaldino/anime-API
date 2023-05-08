@@ -32,6 +32,7 @@ class AnimesViewSet(viewsets.ModelViewSet):
         'estudio',
         'nome_alternativo',
         ]
+    filterset_fields = ['dublagem']
 
     queryset = Anime.objects.all().order_by('-id')
     serializer_class = AnimeSerializer

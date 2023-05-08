@@ -12,6 +12,7 @@ class Animes(admin.ModelAdmin):
         'nota',
         'estudio',
         'diretor',
+        'dublagem',
         'get_generos',
         'imagem',
     )

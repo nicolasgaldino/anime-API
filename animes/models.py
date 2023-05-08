@@ -25,6 +25,7 @@ class Anime(models.Model):
     )
     estudio = models.CharField(max_length=50)
     diretor = models.CharField(max_length=50)
+    dublagem = models.BooleanField(default=False)
     generos = models.ManyToManyField('Genero')
     imagem = models.ImageField(
         upload_to='animes/covers/%Y/%m/%d',
