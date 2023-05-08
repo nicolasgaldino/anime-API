@@ -44,6 +44,7 @@ As seguintes dependências foram utilizadas na versão atual do projeto:
 | coreschema                 | 0.0.4     |
 | Django                     | 4.2       |
 | django-cors-headers        | 3.14.0    |
+| django-filter              | 23.2      |
 | djangorestframework        | 3.14.0    |
 | drf-yasg                   | 1.21.5    |
 | idna                       | 3.4       |
