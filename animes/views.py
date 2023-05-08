@@ -18,10 +18,19 @@ class AnimesViewSet(viewsets.ModelViewSet):
     authentication_classes = [BasicAuthentication]
     permission_classes = [IsAuthenticated]
 
-    filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
+    filter_backends = [
+        DjangoFilterBackend,
+        filters.OrderingFilter,
+        filters.SearchFilter,
+        ]
     ordering_fields = [
         'nome',
         'estudio',
+        ]
+    search_fields = [
+        'nome',
+        'estudio',
+        'nome_alternativo',
         ]
 
     queryset = Anime.objects.all().order_by('-id')
