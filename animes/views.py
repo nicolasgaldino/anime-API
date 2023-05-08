@@ -31,6 +31,7 @@ class AnimesViewSet(viewsets.ModelViewSet):
         'nome',
         'estudio',
         'nome_alternativo',
+        'generos__nome',
         ]
     filterset_fields = ['dublagem']
 
