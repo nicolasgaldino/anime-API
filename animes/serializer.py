@@ -67,11 +67,3 @@ class AnimeSerializer(serializers.ModelSerializer):
             genero, created = Genero.objects.get_or_create(**genero_data)
             anime.generos.add(genero)
         return anime
-
-
-class ListaAnimeDetalhadoSerializer(serializers.ModelSerializer):
-    generos = GeneroSerializer(many=True)
-
-    class Meta:
-        model = Anime
-        fields = '__all__'

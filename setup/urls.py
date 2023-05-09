@@ -6,8 +6,8 @@ from django.urls import path, include
 from rest_framework import permissions
 from django.conf.urls.static import static
 from drf_yasg.views import get_schema_view
+from animes.views import GenerosViewSet, AnimesViewSet
 from rest_framework.pagination import PageNumberPagination
-from animes.views import GenerosViewSet, AnimesViewSet, ListaAnimeDetalhado
 
 
 router = routers.DefaultRouter()
@@ -39,8 +39,6 @@ schema_view = get_schema_view(
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
-    path('animes/<int:pk>/detalhes/', ListaAnimeDetalhado.as_view()),
-    path('animes/?page=<int:pk>', ListaAnimeDetalhado.as_view(pagination_class=pagination_class)),  # noqa E501
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),  # noqa E501
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),  # noqa E501
 ]

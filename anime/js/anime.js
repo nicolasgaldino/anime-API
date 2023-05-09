@@ -11,7 +11,7 @@ const AUTH_HEADER = 'Basic ' + btoa(`${USERNAME}:${PASSWORD}`);
 const PAGE_SIZE = 8;
 let currentPage = localStorage.getItem('currentPage') || 1;
 
-fetchAnimeData(CAROUSEL_INDICATORS, CAROUSEL_INNER, `${BASE_URL}?page=1`, AUTH_HEADER);
+fetchAnimeData(CAROUSEL_INDICATORS, CAROUSEL_INNER, `${BASE_URL}`, AUTH_HEADER);
 
 // Função para atualizar a página atual e salvar no localStorage
 function updateCurrentPage(page) {
@@ -23,7 +23,7 @@ function updateCurrentPage(page) {
 
 // Função para carregar a página atual
 function loadCurrentPage() {
-  const url = `${BASE_URL}?page=${currentPage}&page_size=${PAGE_SIZE}`;
+  const url = `${BASE_URL}?page=${currentPage}`;
 
   fetch(url, {
     headers: {
@@ -31,7 +31,13 @@ function loadCurrentPage() {
     }
   })
     .then(response => response.json())
-    .then(data => addAnimeCardsToDOM(data, ANIME_LIST))
+    .then(data => {
+      if (data.results.length === 0) {
+        console.log('Não existem mais animes.');
+      } else {
+        addAnimeCardsToDOM(data, ANIME_LIST);
+      }
+    })
     .catch(error => console.error('Erro ao carregar animes:', error));
 }
 
@@ -44,9 +50,11 @@ function nextPage() {
 
 // Função para voltar para a página anterior
 function previousPage() {
-  currentPage--;
-  loadCurrentPage();
-  updateCurrentPage(currentPage);
+  if (currentPage > 1) {
+    currentPage--;
+    loadCurrentPage();
+    updateCurrentPage(currentPage);
+  }
 }
 
 // Adiciona os listeners de clique nos botões de paginação

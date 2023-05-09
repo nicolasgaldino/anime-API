@@ -39,7 +39,7 @@ export function createAnimeCard(anime) {
             <p class="anime-text">Estúdio: ${anime.estudio}</p>
             <p class="anime-text">Diretor: ${anime.diretor}</p>
             <p class="anime-text">Lançamento: ${moment(anime.data_lancamento).format('DD - MM - YYYY')}</p>
-            <p class="anime-text">Dublado: ${anime.dublagem ? "Sim" : "Não"}</p>
+            <p class="anime-text">${anime.dublagem ? "Dublado" : "Legendado"}</p>
             <p class="anime-text icon-paragraph bg-black">
               <i class="icon-mal"></i>
               ${anime.nota}
