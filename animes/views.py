@@ -1,9 +1,7 @@
 from rest_framework import filters
 from rest_framework import viewsets
 from animes.models import Genero, Anime
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.pagination import PageNumberPagination
-from rest_framework.authentication import BasicAuthentication
 from django_filters.rest_framework import DjangoFilterBackend
 from animes.serializer import (
     GeneroSerializer,
@@ -13,10 +11,6 @@ from animes.serializer import (
 
 class AnimesViewSet(viewsets.ModelViewSet):
     """Listando todos os animes."""
-
-    authentication_classes = [BasicAuthentication]
-    permission_classes = [IsAuthenticated]
-
     filter_backends = [
         DjangoFilterBackend,
         filters.OrderingFilter,
@@ -42,9 +36,5 @@ class AnimesViewSet(viewsets.ModelViewSet):
 
 class GenerosViewSet(viewsets.ModelViewSet):
     """Listando todos os gêneros."""
-
-    authentication_classes = [BasicAuthentication]
-    permission_classes = [IsAuthenticated]
-
     queryset = Genero.objects.all()
     serializer_class = GeneroSerializer
