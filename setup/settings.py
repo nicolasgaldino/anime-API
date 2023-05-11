@@ -95,6 +95,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ORIGIN_ALLOW_ALL = True
 
+SEARCH_FIELDS = [
+    'nome',
+    'nome_alternativo',
+    'estudio',
+    'diretor',
+    'generos__nome',
+]
+
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
