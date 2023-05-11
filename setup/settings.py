@@ -103,6 +103,20 @@ SEARCH_FIELDS = [
     'generos__nome',
 ]
 
+FIELDS = [
+    'id',
+    'nome',
+    'nome_alternativo',
+    'sinopse',
+    'data_lancamento',
+    'nota',
+    'estudio',
+    'diretor',
+    'dublagem',
+    'generos',
+    'imagem',
+]
+
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
