@@ -118,6 +118,9 @@ db copy.sqlite3
 # Add again for course purpose
 !db.sqlite3
 
-# Comandos do requirments
+# Adicionado arquivo HTML para testes de requisição à API
+teste.html
+
+# Comandos do requirements
 # pip freeze > requirements.txt
 # pip install -r requirements.txt
