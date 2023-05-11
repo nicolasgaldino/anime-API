@@ -27,6 +27,7 @@ class AnimesViewSet(viewsets.ModelViewSet):
         'generos__nome',
         ]
     filterset_fields = ['dublagem']
+    http_method_names = ['get', 'post', 'put', 'patch']
 
     queryset = Anime.objects.all().order_by('-id')
     serializer_class = AnimeSerializer
@@ -38,3 +39,4 @@ class GenerosViewSet(viewsets.ModelViewSet):
     """Listando todos os gêneros."""
     queryset = Genero.objects.all()
     serializer_class = GeneroSerializer
+    http_method_names = ['get', 'post']
