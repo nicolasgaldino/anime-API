@@ -2,6 +2,7 @@ from rest_framework import filters
 from rest_framework import viewsets
 from animes.models import Genero, Anime
 from rest_framework.pagination import PageNumberPagination
+from utils.create_with_response import create_with_response
 from django_filters.rest_framework import DjangoFilterBackend
 from animes.serializer import (
     GeneroSerializer,
@@ -34,9 +35,17 @@ class AnimesViewSet(viewsets.ModelViewSet):
     pagination_class = PageNumberPagination
     page_size = 8
 
+    def create(self, request):
+        serializer = self.serializer_class(data=request.data)
+        return create_with_response(serializer, request)
+
 
 class GenerosViewSet(viewsets.ModelViewSet):
     """Listando todos os gêneros."""
     queryset = Genero.objects.all()
     serializer_class = GeneroSerializer
-    http_method_names = ['get', 'post']
+    http_method_names = ['get', 'post', 'delete']
+
+    def create(self, request):
+        serializer = self.serializer_class(data=request.data)
+        return create_with_response(serializer, request)
