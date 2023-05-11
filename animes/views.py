@@ -44,7 +44,7 @@ class GenerosViewSet(viewsets.ModelViewSet):
     """Listando todos os gêneros."""
     queryset = Genero.objects.all()
     serializer_class = GeneroSerializer
-    http_method_names = ['get', 'post', 'delete']
+    http_method_names = ['get', 'post']
 
     def create(self, request):
         serializer = self.serializer_class(data=request.data)
