@@ -95,6 +95,20 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ORIGIN_ALLOW_ALL = True
 
+LIST_DISPLAY = [
+    'id',
+    'nome',
+    'nome_alternativo',
+    'sinopse',
+    'data_lancamento',
+    'nota',
+    'estudio',
+    'diretor',
+    'dublagem',
+    'get_generos',
+    'imagem',
+    ]
+
 SEARCH_FIELDS = [
     'nome',
     'nome_alternativo',

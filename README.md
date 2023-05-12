@@ -89,8 +89,3 @@ python manage.py migrate
 ```
 python manage.py runserver
 ```
-
-Pronto! O servidor local estará rodando na porta 8000 por padrão.
-Acesse o seu navegador e digite "http://localhost:8000" para visualizar a sua aplicação.
-
-

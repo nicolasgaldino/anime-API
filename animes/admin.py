@@ -1,21 +1,10 @@
+from django.conf import settings
 from django.contrib import admin
 from animes.models import Genero, Anime
 
 
 class Animes(admin.ModelAdmin):
-    list_display = (
-        'id',
-        'nome',
-        'nome_alternativo',
-        'sinopse',
-        'data_lancamento',
-        'nota',
-        'estudio',
-        'diretor',
-        'dublagem',
-        'get_generos',
-        'imagem',
-    )
+    list_display = settings.LIST_DISPLAY
     list_display_links = ('id', 'nome', 'nome_alternativo')
     search_fields = ('nome', 'nome_alternativo',)
     list_per_page = 20
